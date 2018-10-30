@@ -1,0 +1,42 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "vaultName": {
+            "type": "String"
+        },
+        "vaultRG": {
+            "type":"String"
+        },
+        "policyName": {
+            "type": "String"
+        },
+        "fabricName": {
+            "type": "String"
+        },
+        "backupItem": {
+            "type": "Array"
+        }
+    },
+    "variables": {
+        
+        "protectionContainers":"iaasvmcontainer;iaasvmcontainerv2;",
+        "protectedItems":"vm;iaasvmcontainerv2;"
+    },
+    "resources": [
+        {
+            "type": "Microsoft.RecoveryServices/vaults/backupFabrics/protectionContainers/protectedItems",
+            "name": "[concat(parameters('vaultName'), '/', parameters('fabricName'), '/',variables('protectionContainers'), parameters('backupItem')[copyIndex()].VMRG,';',parameters('backupItem')[copyIndex()].VMName, '/', variables('protectedItems'),parameters('backupItem')[copyIndex()].VMRG,';',parameters('backupItem')[copyIndex()].VMName)]",
+            "apiVersion": "2016-06-01",
+            "copy": {
+                "name": "protectedItemsCopy",
+                "count": "[length(parameters('backupItem'))]"
+            },
+            "properties": {
+                "protectedItemType": "Microsoft.ClassicCompute/virtualMachines",
+                "policyId": "[resourceId('Microsoft.RecoveryServices/vaults/backupPolicies', parameters('vaultName'), parameters('policyName'))]",
+                "sourceResourceId": "[resourceId(parameters('backupItem')[copyIndex()].VMRG, 'Microsoft.Compute/virtualMachines', parameters('backupItem')[copyIndex()].VMName)]"
+            }
+        }
+    ]
+}
