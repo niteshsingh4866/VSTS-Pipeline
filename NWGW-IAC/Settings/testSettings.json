@@ -1,0 +1,47 @@
+{
+    "$schema": "http://json-schema.org/schema#",
+     "WorkLoads": [
+                    {
+                        "applicationName" : "nbs-networkservices",
+					    "environmentName" : "prd-001",
+                        "resourceGroupName": "nitesh-chatbot-rg",
+                        "gatewayType": "vpn",
+                        "virtualNetworkName": "chatbotVNet",
+                        "gatewayPublicIPName": "vpnpip1",
+                        "gatewayName": "niteshVPNGateway",
+                        "sku":"VpnGw1",
+                        "VPNType": "RouteBased",
+                        "gatewayIPconfName": "VPNGWIPconf",
+                        "location": "southeastasia", 
+                        "activeActive":"true",
+                        "activeActiveGatewayPublicIpName":"vpnpip2"                     
+                    },
+                    {
+                        "applicationName" : "nbs-networkservices",
+					    "environmentName" : "prd-001",
+                        "resourceGroupName": "nitesh-chatbot-rg",
+                        "gatewayType": "vpn",
+                        "virtualNetworkName": "chatbotVNet",
+                        "gatewayPublicIPName": "vpnpip1",
+                        "gatewayName": "niteshVPNGateway",
+                        "sku":"VpnGw1",
+                        "VPNType": "RouteBased",
+                        "gatewayIPconfName": "VPNGWIPconf",
+                        "location": "southeastasia", 
+                        "activeActive":"false",
+                        "activeActiveGatewayPublicIpName":""                     
+                    },
+                    {
+                        "applicationName" : "nbs-networkservices",
+					    "environmentName" : "prd-001",
+                        "resourceGroupName": "nitesh-chatbot-rg",
+                        "gatewayType": "ExpressRoute",
+                        "virtualNetworkName": "chatbotVNet",
+                        "gatewayPublicIPName": "vpnpip1",
+                        "gatewayName": "niteshVPNGateway",
+                        "sku":"Standard",
+                        "gatewayIPconfName": "VPNGWIPconf",
+                        "location": "southeastasia"                    
+                    }										
+                ]
+}

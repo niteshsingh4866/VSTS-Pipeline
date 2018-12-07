@@ -1,0 +1,20 @@
+{
+    "$schema": "http://json-schema.org/schema#",
+     "WorkLoads": [
+                    {
+                        "applicationName" : "nbs-networkservices",
+					    "environmentName" : "prd-001",
+                        "resourceGroupName": "nitesh-chatbot-rg",
+                        "gatewayType": "ExpressRoute",
+                        "virtualNetworkName": "chatbotVNet",
+                        "gatewayPublicIPName": "vpnpip1",
+                        "gatewayName": "niteshVPNGateway",
+                        "sku":"Standard",
+                        "VPNType": "RouteBased",
+                        "gatewayIPconfName": "VPNGWIPconf",
+                        "location": "southeastasia", 
+                        "activeActive":"true",
+                        "activeActiveGatewayPublicIpName":""                     
+                    }				
+                ]
+}
