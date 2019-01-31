@@ -1,0 +1,14 @@
+{
+    "$schema": "http://json-schema.org/schema#",
+    "organizationName": "nv",
+    "subscriptions" : 
+    [
+      {
+        "applicationName": "ASEv1",            
+        "environmentName": "dfi",
+        "useForAcceptanceTest": true,
+        "subscriptionId": "xxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+        "comment": "Microsoft Azure Sponsorship"
+      }	 
+    ]            
+}
