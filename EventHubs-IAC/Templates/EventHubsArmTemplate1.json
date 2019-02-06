@@ -1,0 +1,45 @@
+{ 
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+          "namespaceName":{
+            "type": "string"
+           },
+          "eventHubName":{
+            "type":"string"
+          },
+          "location":{
+            "type":"string"
+          },
+          "retentionInDays":{
+            "type": "int",
+            "defaultValue": 1,
+            "maxValue": 7,
+            "minValue": 1
+
+          },
+          "partitionCount":{
+            "type": "int",
+            "defaultValue": 2,
+            "maxValue": 32,
+            "minValue": 1,
+            "metadata": { "description": " The value of partition count resides between 2 and 32"  }
+          }
+    },
+    "resources": [
+        {
+            "type": "Microsoft.EventHub/namespaces/eventhubs",
+            "name": "[concat(parameters('namespaceName'), '/', parameters('eventHubName'))]",
+            "apiVersion": "2017-04-01",
+            "location": "[parameters('location')]",
+            "scale": null,
+            "properties": {
+                "messageRetentionInDays":"[parameters('retentionInDays')]",
+                "partitionCount": "[parameters('partitionCount')]",
+                "status": "Active"
+            }
+        }     
+    ]
+}
+
+
